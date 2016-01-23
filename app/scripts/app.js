@@ -1,13 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name expensesApp
- * @description
- * # expensesApp
- *
- * Main module of the application.
- */
 angular
   .module('expensesApp', [
     'ngAnimate',
@@ -17,6 +9,9 @@ angular
     'ngSanitize',
     'ngTouch'
   ])
+  .constant('appSettings', {
+    db: 'http://marceldegas:swordfish@127.0.0.1:5984/expenses'
+  })
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
