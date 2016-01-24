@@ -8,6 +8,15 @@
  * Controller of the expensesApp
  */
 angular.module('expensesApp')
-  .controller('MainCtrl', function ($scope, appSettings) {
-   		console.log(appSettings)
+  .controller('MainCtrl', function ($scope, $http, appSettings) {
+   		console.log(appSettings);
+
+   		function getItems() {
+   			$http.get(appSettings.db + '/_design/expenses/_view/byName')
+   			.success(function (data) {
+   				$scope.items = data.rows;
+   			});
+   		}
+
+   		getItems();
   });
